@@ -1,0 +1,120 @@
+//
+//  ContentView.swift
+//  FComponents
+//
+//  Created by Javier Martin on 14/2/25.
+//
+
+import SwiftUI
+
+public struct FCButton: View {
+
+    @ObservedObject private var viewModel: ViewModel
+
+    @State private var pressed = false
+
+    public init(_ viewModel: ViewModel) {
+        self.viewModel = viewModel
+    }
+
+    public var body: some View {
+        mainContentView
+    }
+}
+
+private extension FCButton {
+    var mainContentView: some View {
+        HStack{
+            if let leadingIcon = configuration.leadingIcon {
+                imageView(resource: leadingIcon, color: style.leadingIconColor, size: size.iconSize())
+            }
+            titleView
+            if let trailingIcon = configuration.trailingIcon {
+                imageView(resource: trailingIcon, color: style.trailingIconColor, size: size.iconSize())
+            }
+        }
+        .frame(maxWidth: configuration.maxWidth ? .infinity : nil)
+        .padding(.vertical, 8)
+        .padding(.horizontal, 8)
+        .background(variant.normalBackgroundColor())
+        .clipShape(
+            .rect(
+                topLeadingRadius: configuration.invertCornerRadius ? 5 : 15,
+                bottomLeadingRadius: configuration.invertCornerRadius ? 15 : 5,
+                bottomTrailingRadius: configuration.invertCornerRadius ? 15 : 5,
+                topTrailingRadius: configuration.invertCornerRadius ? 5 : 15
+            )
+        )
+        .overlay {
+            UnevenRoundedRectangle(cornerRadii:.init(
+                                topLeading: configuration.invertCornerRadius ? 5 : 15,
+                                bottomLeading: configuration.invertCornerRadius ? 15 : 5,
+                                bottomTrailing: configuration.invertCornerRadius ? 15 : 5,
+                                topTrailing: configuration.invertCornerRadius ? 5 : 15))
+            .stroke(variant.normalBorderColor(), lineWidth: size.borderWidth())
+        }
+    }
+
+    func imageView(resource: String, color: Color?, size: CGFloat?) -> some View {
+        Image(systemName: resource)
+            .resizable()
+            .scaledToFit()
+            .frame(width: size, height: size)
+            .foregroundStyle(color ?? .primary)
+    }
+
+    var titleView: some View {
+        Group {
+            if let label = configuration.label {
+                Text(label)
+                    .foregroundStyle(style.textColor)
+                    .font(size.fontSize())
+                    .underline(variant.underlineText())
+            }
+        }
+    }
+}
+
+private extension FCButton {
+    var configuration: Configuration {
+        viewModel.configuration
+    }
+
+    var viewState: ViewState {
+        viewModel.viewState
+    }
+
+    var variant: Variant {
+        viewModel.variant
+    }
+
+    var style: Style {
+        viewModel.style
+    }
+
+    var size: Size {
+        viewModel.size
+    }
+
+    var interaction: Interaction {
+        viewModel.interaction
+    }
+}
+
+#Preview {
+    ScrollView {
+        FCButtonRegularGallery()
+    }
+}
+
+#Preview {
+    ScrollView {
+        FCButtonAlternativeGallery()
+    }
+}
+
+#Preview {
+    ScrollView {
+        FCButtonLinkGallery()
+    }
+}

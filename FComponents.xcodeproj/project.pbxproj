@@ -6,17 +6,28 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		ED4D86A22D9037F100770CDB /* FCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D869F2D9037F100770CDB /* FCButton.swift */; };
+		ED4D86A32D9037F100770CDB /* FCButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D86A02D9037F100770CDB /* FCButton+ViewModel.swift */; };
+		ED4D86A42D9037F100770CDB /* FComponentsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D86A12D9037F100770CDB /* FComponentsApp.swift */; };
+		ED4D86A52D9037F100770CDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED4D869C2D9037F100770CDB /* Preview Assets.xcassets */; };
+		ED4D86A62D9037F100770CDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED4D869E2D9037F100770CDB /* Assets.xcassets */; };
+		ED4D86AA2D905C2D00770CDB /* FCButtonRegularGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D86A92D905C2D00770CDB /* FCButtonRegularGallery.swift */; };
+		ED4D86AC2D90854300770CDB /* FCButtonAlternativeGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D86AB2D90854300770CDB /* FCButtonAlternativeGallery.swift */; };
+		ED4D86AE2D908E5800770CDB /* FCButtonLinkGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D86AD2D908E5800770CDB /* FCButtonLinkGallery.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		ED4D869C2D9037F100770CDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ED4D869E2D9037F100770CDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED4D869F2D9037F100770CDB /* FCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCButton.swift; sourceTree = "<group>"; };
+		ED4D86A02D9037F100770CDB /* FCButton+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCButton+ViewModel.swift"; sourceTree = "<group>"; };
+		ED4D86A12D9037F100770CDB /* FComponentsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FComponentsApp.swift; sourceTree = "<group>"; };
+		ED4D86A92D905C2D00770CDB /* FCButtonRegularGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCButtonRegularGallery.swift; sourceTree = "<group>"; };
+		ED4D86AB2D90854300770CDB /* FCButtonAlternativeGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCButtonAlternativeGallery.swift; sourceTree = "<group>"; };
+		ED4D86AD2D908E5800770CDB /* FCButtonLinkGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCButtonLinkGallery.swift; sourceTree = "<group>"; };
 		EDFFEE3C2D5F811700E46462 /* FComponents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FComponents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		EDFFEE3E2D5F811700E46462 /* FComponents */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FComponents;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EDFFEE392D5F811700E46462 /* Frameworks */ = {
@@ -29,10 +40,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED4D86AF2D90B74700770CDB /* FComponents */ = {
+			isa = PBXGroup;
+			children = (
+				ED4D86B02D90B78A00770CDB /* Preview Content */,
+				ED4D869F2D9037F100770CDB /* FCButton.swift */,
+				ED4D86A02D9037F100770CDB /* FCButton+ViewModel.swift */,
+				ED4D86AB2D90854300770CDB /* FCButtonAlternativeGallery.swift */,
+				ED4D86AD2D908E5800770CDB /* FCButtonLinkGallery.swift */,
+				ED4D86A92D905C2D00770CDB /* FCButtonRegularGallery.swift */,
+				ED4D86A12D9037F100770CDB /* FComponentsApp.swift */,
+				ED4D869E2D9037F100770CDB /* Assets.xcassets */,
+			);
+			path = FComponents;
+			sourceTree = "<group>";
+		};
+		ED4D86B02D90B78A00770CDB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				ED4D869C2D9037F100770CDB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		EDFFEE332D5F811700E46462 = {
 			isa = PBXGroup;
 			children = (
-				EDFFEE3E2D5F811700E46462 /* FComponents */,
+				ED4D86AF2D90B74700770CDB /* FComponents */,
 				EDFFEE3D2D5F811700E46462 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,9 +93,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				EDFFEE3E2D5F811700E46462 /* FComponents */,
 			);
 			name = FComponents;
 			packageProductDependencies = (
@@ -109,6 +140,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED4D86A52D9037F100770CDB /* Preview Assets.xcassets in Resources */,
+				ED4D86A62D9037F100770CDB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +152,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED4D86AC2D90854300770CDB /* FCButtonAlternativeGallery.swift in Sources */,
+				ED4D86A22D9037F100770CDB /* FCButton.swift in Sources */,
+				ED4D86AA2D905C2D00770CDB /* FCButtonRegularGallery.swift in Sources */,
+				ED4D86AE2D908E5800770CDB /* FCButtonLinkGallery.swift in Sources */,
+				ED4D86A32D9037F100770CDB /* FCButton+ViewModel.swift in Sources */,
+				ED4D86A42D9037F100770CDB /* FComponentsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

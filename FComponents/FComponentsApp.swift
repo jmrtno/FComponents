@@ -11,7 +11,7 @@ import SwiftUI
 struct FComponentsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            // FCButton()
         }
     }
 }
