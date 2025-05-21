@@ -36,6 +36,7 @@ private extension FCButton {
         .frame(maxWidth: configuration.maxWidth ? .infinity : nil)
         .padding(.vertical, 8)
         .padding(.horizontal, 8)
+        .background(pressed && !variant.underlineText() ? variant.pressedBackgroundColor() : .clear)
         .background(variant.normalBackgroundColor())
         .clipShape(
             .rect(
@@ -53,26 +54,34 @@ private extension FCButton {
                                 topTrailing: configuration.invertCornerRadius ? 5 : 15))
             .stroke(variant.normalBorderColor(), lineWidth: size.borderWidth())
         }
+        .onPressStateChanged { pressed = $0 }
+        .animation(.easeInOut(duration: 0.10), value: pressed)
     }
 
     func imageView(resource: String, color: Color?, size: CGFloat?) -> some View {
-        Image(systemName: resource)
+        let shouldDim = pressed && variant.underlineText() && configuration.label == nil
+        let finalColor = (color ?? .primary).opacity(shouldDim ? 0.6 : 1.0)
+
+        return Image(systemName: resource)
             .resizable()
             .scaledToFit()
             .frame(width: size, height: size)
-            .foregroundStyle(color ?? .primary)
+            .foregroundStyle(finalColor)
     }
 
     var titleView: some View {
         Group {
             if let label = configuration.label {
+                let shouldDim = pressed && variant.underlineText()
+                let textColor = style.textColor.opacity(shouldDim ? 0.6 : 1.0)
                 Text(label)
-                    .foregroundStyle(style.textColor)
+                    .foregroundStyle(textColor)
                     .font(size.fontSize())
                     .underline(variant.underlineText())
             }
         }
     }
+
 }
 
 private extension FCButton {
@@ -100,6 +109,18 @@ private extension FCButton {
         viewModel.interaction
     }
 }
+
+extension View {
+    func onPressStateChanged(_ action: @escaping (Bool) -> Void) -> some View {
+        self
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { _ in action(true) }
+                    .onEnded { _ in action(false) }
+            )
+    }
+}
+
 
 #Preview {
     ScrollView {

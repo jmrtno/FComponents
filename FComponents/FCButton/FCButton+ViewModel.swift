@@ -77,10 +77,21 @@ public extension FCButton {
             }
         }
 
+        func pressedBackgroundColor() -> Color {
+            switch type {
+            case .regular:
+                return Color.black.opacity(0.2)
+            case .alternative:
+                return Color.black.opacity(0.2)
+            case .link:
+                return .clear
+            }
+        }
+
         func normalBorderColor() -> Color {
             switch type {
             case .regular:
-                return .clear
+                return .red
             case .alternative(color: let color):
                 return color
             case .link:
