@@ -30,7 +30,8 @@ public extension FCCard {
                 topBar
             }
             content
-                .frame(maxWidth: configuration.maxWidth ? .infinity : nil)
+                .frame(maxWidth: configuration.maxWidth ? .infinity : nil,
+                       alignment: configuration.contentAlignment)
                 .padding()
                 .background(style.innerCardBgColor)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -108,8 +109,9 @@ private extension FCCard {
     FCCard(viewModel: .init(
            configuration: .init(
             doubleCard: true,
-            maxWidth: false,
-            topLeadingContent: false,
+            maxWidth: true,
+            contentAlignment: .leading,
+            topLeadingContent: true,
             topLeadingIcon: "star.fill",
             topLeadingLabel: "Destacado",
             topTrailingContent: false,
@@ -134,7 +136,7 @@ private extension FCCard {
                 .frame(width: 50)
             VStack(alignment: .leading) {
                 Text("Titulo")
-                Text("Subtitulo")
+                Text("Subtitulo Subtitulo sub sub")
             }
         }
    }

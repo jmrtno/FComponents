@@ -11,6 +11,7 @@ public extension FCCard {
     struct Configuration {
         public var doubleCard: Bool
         public var maxWidth: Bool
+        public var contentAlignment: Alignment
         public var topLeadingContent: Bool
         public var topLeadingIcon: String?
         public var topLeadingLabel: String?
@@ -20,6 +21,7 @@ public extension FCCard {
 
         public init(doubleCard: Bool,
                     maxWidth: Bool,
+                    contentAlignment: Alignment = .center,
                     topLeadingContent: Bool = false,
                     topLeadingIcon: String? = nil,
                     topLeadingLabel: String? = nil,
@@ -28,6 +30,7 @@ public extension FCCard {
                     topTrailingLabel: String? = nil) {
             self.doubleCard = doubleCard
             self.maxWidth = maxWidth
+            self.contentAlignment = contentAlignment
             self.topLeadingContent = topLeadingContent
             self.topLeadingIcon = topLeadingIcon
             self.topLeadingLabel = topLeadingLabel
