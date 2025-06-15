@@ -10,15 +10,15 @@
 		ED4D86A22D9037F100770CDB /* FCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D869F2D9037F100770CDB /* FCButton.swift */; };
 		ED4D86A32D9037F100770CDB /* FCButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D86A02D9037F100770CDB /* FCButton+ViewModel.swift */; };
 		ED4D86A42D9037F100770CDB /* FComponentsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D86A12D9037F100770CDB /* FComponentsApp.swift */; };
-		ED4D86A52D9037F100770CDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED4D869C2D9037F100770CDB /* Preview Assets.xcassets */; };
 		ED4D86A62D9037F100770CDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED4D869E2D9037F100770CDB /* Assets.xcassets */; };
 		ED4D86AA2D905C2D00770CDB /* FCButtonRegularGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D86A92D905C2D00770CDB /* FCButtonRegularGallery.swift */; };
 		ED4D86AC2D90854300770CDB /* FCButtonAlternativeGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D86AB2D90854300770CDB /* FCButtonAlternativeGallery.swift */; };
 		ED4D86AE2D908E5800770CDB /* FCButtonLinkGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D86AD2D908E5800770CDB /* FCButtonLinkGallery.swift */; };
+		ED8523942DFC835500FA4D45 /* FCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8523932DFC835500FA4D45 /* FCCard.swift */; };
+		ED8523962DFC836B00FA4D45 /* FCCard+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8523952DFC835D00FA4D45 /* FCCard+ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ED4D869C2D9037F100770CDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ED4D869E2D9037F100770CDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED4D869F2D9037F100770CDB /* FCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCButton.swift; sourceTree = "<group>"; };
 		ED4D86A02D9037F100770CDB /* FCButton+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCButton+ViewModel.swift"; sourceTree = "<group>"; };
@@ -26,6 +26,8 @@
 		ED4D86A92D905C2D00770CDB /* FCButtonRegularGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCButtonRegularGallery.swift; sourceTree = "<group>"; };
 		ED4D86AB2D90854300770CDB /* FCButtonAlternativeGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCButtonAlternativeGallery.swift; sourceTree = "<group>"; };
 		ED4D86AD2D908E5800770CDB /* FCButtonLinkGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCButtonLinkGallery.swift; sourceTree = "<group>"; };
+		ED8523932DFC835500FA4D45 /* FCCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCCard.swift; sourceTree = "<group>"; };
+		ED8523952DFC835D00FA4D45 /* FCCard+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCCard+ViewModel.swift"; sourceTree = "<group>"; };
 		EDFFEE3C2D5F811700E46462 /* FComponents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FComponents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -43,24 +45,41 @@
 		ED4D86AF2D90B74700770CDB /* FComponents */ = {
 			isa = PBXGroup;
 			children = (
-				ED4D86B02D90B78A00770CDB /* Preview Content */,
-				ED4D869F2D9037F100770CDB /* FCButton.swift */,
-				ED4D86A02D9037F100770CDB /* FCButton+ViewModel.swift */,
-				ED4D86AB2D90854300770CDB /* FCButtonAlternativeGallery.swift */,
-				ED4D86AD2D908E5800770CDB /* FCButtonLinkGallery.swift */,
-				ED4D86A92D905C2D00770CDB /* FCButtonRegularGallery.swift */,
+				ED85238F2DFC82EC00FA4D45 /* FCCard */,
+				EDF61F302DDE625A00E9D8B8 /* FCButton */,
 				ED4D86A12D9037F100770CDB /* FComponentsApp.swift */,
 				ED4D869E2D9037F100770CDB /* Assets.xcassets */,
 			);
 			path = FComponents;
 			sourceTree = "<group>";
 		};
-		ED4D86B02D90B78A00770CDB /* Preview Content */ = {
+		ED85238F2DFC82EC00FA4D45 /* FCCard */ = {
 			isa = PBXGroup;
 			children = (
-				ED4D869C2D9037F100770CDB /* Preview Assets.xcassets */,
+				ED8523952DFC835D00FA4D45 /* FCCard+ViewModel.swift */,
+				ED8523932DFC835500FA4D45 /* FCCard.swift */,
 			);
-			path = "Preview Content";
+			path = FCCard;
+			sourceTree = "<group>";
+		};
+		EDF61F302DDE625A00E9D8B8 /* FCButton */ = {
+			isa = PBXGroup;
+			children = (
+				EDF61F312DDE627600E9D8B8 /* Gallery */,
+				ED4D869F2D9037F100770CDB /* FCButton.swift */,
+				ED4D86A02D9037F100770CDB /* FCButton+ViewModel.swift */,
+			);
+			path = FCButton;
+			sourceTree = "<group>";
+		};
+		EDF61F312DDE627600E9D8B8 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				ED4D86AB2D90854300770CDB /* FCButtonAlternativeGallery.swift */,
+				ED4D86AD2D908E5800770CDB /* FCButtonLinkGallery.swift */,
+				ED4D86A92D905C2D00770CDB /* FCButtonRegularGallery.swift */,
+			);
+			path = Gallery;
 			sourceTree = "<group>";
 		};
 		EDFFEE332D5F811700E46462 = {
@@ -140,7 +159,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED4D86A52D9037F100770CDB /* Preview Assets.xcassets in Resources */,
 				ED4D86A62D9037F100770CDB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,8 +170,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED8523942DFC835500FA4D45 /* FCCard.swift in Sources */,
 				ED4D86AC2D90854300770CDB /* FCButtonAlternativeGallery.swift in Sources */,
 				ED4D86A22D9037F100770CDB /* FCButton.swift in Sources */,
+				ED8523962DFC836B00FA4D45 /* FCCard+ViewModel.swift in Sources */,
 				ED4D86AA2D905C2D00770CDB /* FCButtonRegularGallery.swift in Sources */,
 				ED4D86AE2D908E5800770CDB /* FCButtonLinkGallery.swift in Sources */,
 				ED4D86A32D9037F100770CDB /* FCButton+ViewModel.swift in Sources */,
@@ -290,7 +310,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FComponents/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = VZ82ZJHYB5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -319,7 +339,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FComponents/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = VZ82ZJHYB5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
