@@ -10,6 +10,7 @@ import SwiftUI
 public struct FCCard<Content: View>: View {
 
     @ObservedObject private var viewModel: ViewModel
+    @State private var pressed = false
     private let content: Content
 
     public init(viewModel: ViewModel,
@@ -82,12 +83,14 @@ public extension FCCard {
             }
             if let image {
                 Image(systemName: image)
-                    .onTapGesture {
-                        interaction.onTap()
-                    }
             }
         }
-        .foregroundStyle(style.topTrailingContentColor)
+        .foregroundStyle(style.topTrailingContentColor.opacity(pressed ? 0.6 : 1))
+        .onTapGesture {
+            interaction.onTap()
+        }
+        .onPressStateChanged { pressed = $0 }
+        .animation(.easeInOut(duration: 0.10), value: pressed)
     }
 }
 
@@ -114,7 +117,7 @@ private extension FCCard {
             topLeadingContent: true,
             topLeadingIcon: "star.fill",
             topLeadingLabel: "Destacado",
-            topTrailingContent: false,
+            topTrailingContent: true,
             topTrailingIcon: "ellipsis",
             topTrailingLabel: "Más"
            ),
