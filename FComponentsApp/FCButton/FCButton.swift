@@ -24,7 +24,7 @@ public struct FCButton: View {
 
 private extension FCButton {
     var mainContentView: some View {
-        HStack{
+        HStack {
             if let leadingIcon = configuration.leadingIcon {
                 imageView(resource: leadingIcon, color: style.leadingIconColor, size: size.iconSize())
             }
@@ -53,6 +53,9 @@ private extension FCButton {
                                 bottomTrailing: configuration.invertCornerRadius ? 15 : 5,
                                 topTrailing: configuration.invertCornerRadius ? 5 : 15))
             .stroke(variant.normalBorderColor(), lineWidth: size.borderWidth())
+        }
+        .onTapGesture {
+            interaction.onTap()
         }
         .onPressStateChanged { pressed = $0 }
         .animation(.easeInOut(duration: 0.10), value: pressed)

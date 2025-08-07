@@ -5,6 +5,7 @@
 //  Created by Javier Martin on 14/2/25.
 //
 
+import Combine
 import SwiftUI
 
 public extension FCButton {
@@ -46,12 +47,16 @@ public extension FCButton {
     }
 
     struct Variant {
-        let type: VariantType
+        public let type: VariantType
 
-        enum VariantType {
+        public enum VariantType {
             case regular(color: Color?)
             case alternative(color: Color)
             case link
+        }
+
+        public init(type: VariantType) {
+            self.type = type
         }
 
         public static var regular: Variant {
@@ -91,7 +96,7 @@ public extension FCButton {
         func normalBorderColor() -> Color {
             switch type {
             case .regular:
-                return .red
+                return .clear
             case .alternative(color: let color):
                 return color
             case .link:

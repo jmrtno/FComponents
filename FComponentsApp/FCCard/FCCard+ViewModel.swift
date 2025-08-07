@@ -12,29 +12,29 @@ public extension FCCard {
         public var doubleCard: Bool
         public var maxWidth: Bool
         public var contentAlignment: Alignment
-        public var topLeadingContent: Bool
+        public var showTopLeadingContent: Bool
         public var topLeadingIcon: String?
         public var topLeadingLabel: String?
-        public var topTrailingContent: Bool
+        public var showTopTrailingContent: Bool
         public var topTrailingIcon: String?
         public var topTrailingLabel: String?
 
         public init(doubleCard: Bool,
                     maxWidth: Bool,
                     contentAlignment: Alignment = .center,
-                    topLeadingContent: Bool = false,
+                    showTopLeadingContent: Bool,
                     topLeadingIcon: String? = nil,
                     topLeadingLabel: String? = nil,
-                    topTrailingContent: Bool = false,
+                    showTopTrailingContent: Bool,
                     topTrailingIcon: String? = nil,
                     topTrailingLabel: String? = nil) {
             self.doubleCard = doubleCard
             self.maxWidth = maxWidth
             self.contentAlignment = contentAlignment
-            self.topLeadingContent = topLeadingContent
+            self.showTopLeadingContent = showTopLeadingContent
             self.topLeadingIcon = topLeadingIcon
             self.topLeadingLabel = topLeadingLabel
-            self.topTrailingContent = topTrailingContent
+            self.showTopTrailingContent = showTopTrailingContent
             self.topTrailingIcon = topTrailingIcon
             self.topTrailingLabel = topTrailingLabel
         }
