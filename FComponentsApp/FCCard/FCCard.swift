@@ -27,7 +27,7 @@ public struct FCCard<Content: View>: View {
 public extension FCCard {
     var mainContentView: some View {
         VStack {
-            if configuration.showTopLeadingContent || configuration.showTopTrailingContent {
+            if hasTopBarContent {
                 topBar
             }
             content
@@ -35,16 +35,30 @@ public extension FCCard {
                        alignment: configuration.contentAlignment)
                 .background(style.innerCardBgColor)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(style.innerCardBorderColor, lineWidth: 1)
+                }
         }
         .padding(configuration.doubleCard ? 16 : 0)
         .background(configuration.doubleCard ? style.doubleCardBgColor : .clear)
         .clipShape(RoundedRectangle(cornerRadius: 10))
+        .overlay {
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(style.doubleCardBorderColor, lineWidth: 1)
+        }
     }
-
+    
+    private var hasTopBarContent: Bool {
+        configuration.topLeadingIcon != nil ||
+        configuration.topLeadingLabel != nil ||
+        configuration.topTrailingIcon != nil ||
+        configuration.topTrailingLabel != nil
+    }
 
     private var topBar: some View {
         HStack {
-            if configuration.showTopLeadingContent {
+            if configuration.topLeadingIcon != nil || configuration.topLeadingLabel != nil {
                 leadingContent(
                     image: configuration.topLeadingIcon,
                     label: configuration.topLeadingLabel
@@ -52,7 +66,7 @@ public extension FCCard {
                 Spacer()
             }
 
-            if configuration.showTopTrailingContent {
+            if configuration.topTrailingIcon != nil || configuration.topTrailingLabel != nil {
                 Spacer()
                 trailingContent(
                     image: configuration.topTrailingIcon,
@@ -62,11 +76,11 @@ public extension FCCard {
         }
     }
 
-
     private func leadingContent(image: String?, label: String?) -> some View {
         HStack(alignment: .center, spacing: 4) {
             if let image {
                 Image(systemName: image)
+                    .padding(.vertical, 2)
             }
             if let label {
                 Text(label)
@@ -83,6 +97,7 @@ public extension FCCard {
             }
             if let image {
                 Image(systemName: image)
+                    .padding(.vertical, 2)
             }
         }
         .foregroundStyle(style.topTrailingContentColor.opacity(pressed ? 0.6 : 1))
@@ -115,16 +130,16 @@ private extension FCCard {
                 doubleCard: true,
                 maxWidth: true,
                 contentAlignment: .leading,
-                showTopLeadingContent: true,
                 topLeadingIcon: "star.fill",
                 topLeadingLabel: "Destacado",
-                showTopTrailingContent: true,
                 topTrailingIcon: "ellipsis",
                 topTrailingLabel: "Más"
                ),
                style: .init(
                    doubleCardBgColor: Color.gray.opacity(0.1),
                    innerCardBgColor: .cyan,
+                   doubleCardBorderColor: .red,
+                   innerCardBorderColor: .green,
                    topLeadingContentColor: .accentColor,
                    topTrailingContentColor: .green
                ),
@@ -150,19 +165,13 @@ private extension FCCard {
                configuration: .init(
                 doubleCard: true,
                 maxWidth: true,
-                contentAlignment: .leading,
-                showTopLeadingContent: false,
-                topLeadingIcon: "star.fill",
-                topLeadingLabel: "Destacado",
-                showTopTrailingContent: false,
-                topTrailingIcon: "ellipsis",
-                topTrailingLabel: "Más"
+                contentAlignment: .leading
                ),
                style: .init(
                    doubleCardBgColor: Color.gray.opacity(0.1),
                    innerCardBgColor: .cyan,
-                   topLeadingContentColor: .accentColor,
-                   topTrailingContentColor: .green
+                   doubleCardBorderColor: .clear,
+                   innerCardBorderColor: .clear
                ),
                interaction: .init(onTap: {
                    print("Card tapped")

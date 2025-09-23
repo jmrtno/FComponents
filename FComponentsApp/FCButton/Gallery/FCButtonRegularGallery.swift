@@ -137,17 +137,22 @@ struct FCButtonRegularGallery: View {
 
     private func createButtonViewModel(label: String? = nil,
                                        color: Color? = .gray,
-                                       leadingIcon: String? = "folder",
+                                       leadingIcon: String? = "location_icon",
                                        trailingIcon: String? = "trash",
                                        maxWidth: Bool = false,
                                        invertCorners: Bool = false) -> FCButton.ViewModel {
+        let grad = LinearGradient(
+            gradient: Gradient(colors: [Color.red, Color.orange]),
+            startPoint: .leading,
+            endPoint: .trailing
+        )
         let configuration = FCButton.Configuration(label: label,
                                                    leadingIcon: leadingIcon,
                                                    trailingIcon: trailingIcon,
                                                    maxWidth: maxWidth,
                                                    invertCornerRadius: invertCorners)
         let viewState = FCButton.ViewState(type: .enabled)
-        let variant = FCButton.Variant(type: .regular(color: color))
+        let variant = FCButton.Variant(type: .regularGradient(grad))
         let style = FCButton.Style(textColor: .white,
                                    leadingIconColor: .black,
                                    trailingIconColor: .black)
@@ -182,7 +187,7 @@ struct FCButtonRegularGallery: View {
 
     private func createButtonIconSizedViewModel(label: String? = nil,
                                             size: FCButton.Size,
-                                            leadingIcon: String? = "folder",
+                                            leadingIcon: String? = "location_icon",
                                             trailingIcon: String? = "trash",
                                             color: Color? = .gray,
                                             invertCorners: Bool = false) -> FCButton.ViewModel {

@@ -50,15 +50,20 @@ public extension FCButton {
         public let type: VariantType
 
         public enum VariantType {
+            // Existing color-based cases (kept for backward compatibility)
             case regular(color: Color?)
             case alternative(color: Color)
             case link
+            // New gradient-based cases
+            case regularGradient(LinearGradient)
+            case alternativeGradient(LinearGradient)
         }
 
         public init(type: VariantType) {
             self.type = type
         }
 
+        // Backwards-compatible defaults
         public static var regular: Variant {
             Variant(type: .regular(color: Color.clear))
         }
@@ -71,11 +76,53 @@ public extension FCButton {
             Variant(type: .link)
         }
 
+        // **New**: convenience creators for gradient variants
+        public static func regularGradient(_ gradient: LinearGradient) -> Variant {
+            Variant(type: .regularGradient(gradient))
+        }
+
+        public static func alternativeGradient(_ gradient: LinearGradient) -> Variant {
+            Variant(type: .alternativeGradient(gradient))
+        }
+
+        // MARK: - New view-returning helpers (used by FCButton)
+        // Dev note: return AnyView so we can return either Color or LinearGradient.
+        func normalBackgroundView() -> AnyView {
+            switch type {
+            case .regular(color: let color):
+                return AnyView((color ?? Color.clear))
+            case .regularGradient(let gradient):
+                return AnyView(gradient)
+            case .alternative, .alternativeGradient:
+                // alternative variants keep a clear background by design (border is used)
+                return AnyView(Color.clear)
+            case .link:
+                return AnyView(Color.clear)
+            }
+        }
+
+        func pressedOverlayView() -> AnyView {
+            // For pressed state we place a semi-transparent black overlay above the normal background.
+            // This works both for solid colors and gradients.
+            switch type {
+            case .link:
+                return AnyView(Color.clear)
+            default:
+                return AnyView(Color.black.opacity(0.2))
+            }
+        }
+
+        // MARK: - Backwards-compatible color helpers (some callers may still use them)
         func normalBackgroundColor() -> Color? {
             switch type {
             case .regular(color: let color):
                 return color
+            case .regularGradient:
+                // gradient -> no single color; return nil to indicate it isn't a solid color
+                return nil
             case .alternative:
+                return .clear
+            case .alternativeGradient:
                 return .clear
             case .link:
                 return .clear
@@ -83,22 +130,19 @@ public extension FCButton {
         }
 
         func pressedBackgroundColor() -> Color {
-            switch type {
-            case .regular:
-                return Color.black.opacity(0.2)
-            case .alternative:
-                return Color.black.opacity(0.2)
-            case .link:
-                return .clear
-            }
+            // kept for compatibility; pressed overlay will visually be the same
+            return Color.black.opacity(0.2)
         }
 
         func normalBorderColor() -> Color {
             switch type {
-            case .regular:
+            case .regular, .regularGradient:
                 return .clear
             case .alternative(color: let color):
                 return color
+            case .alternativeGradient:
+                // not implementing gradient stroke — keep clear so existing behavior intact
+                return .clear
             case .link:
                 return .clear
             }
@@ -108,7 +152,11 @@ public extension FCButton {
             switch type {
             case .regular:
                 return false
+            case .regularGradient:
+                return false
             case .alternative:
+                return false
+            case .alternativeGradient:
                 return false
             case .link:
                 return true
