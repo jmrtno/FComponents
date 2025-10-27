@@ -24,7 +24,7 @@ public struct FCButton: View {
 
 private extension FCButton {
     var mainContentView: some View {
-        HStack{
+        HStack {
             if let leadingIcon = configuration.leadingIcon {
                 imageView(resource: leadingIcon, color: style.leadingIconColor, size: size.iconSize())
             }
@@ -36,37 +36,60 @@ private extension FCButton {
         .frame(maxWidth: configuration.maxWidth ? .infinity : nil)
         .padding(.vertical, 8)
         .padding(.horizontal, 8)
-        .background(pressed && !variant.underlineText() ? variant.pressedBackgroundColor() : .clear)
-        .background(variant.normalBackgroundColor())
+        // Background: normal (color o gradient) + overlay pressed (si aplica)
+        .background(
+            ZStack {
+                // fondo normal (puede ser Color o LinearGradient a través de AnyView)
+                variant.normalBackgroundView()
+                // overlay pressed (semi-transparente) colocado encima del fondo
+                if pressed && !variant.underlineText() {
+                    variant.pressedOverlayView()
+                }
+            }
+        )
         .clipShape(
             .rect(
-                topLeadingRadius: configuration.invertCornerRadius ? 5 : 15,
-                bottomLeadingRadius: configuration.invertCornerRadius ? 15 : 5,
-                bottomTrailingRadius: configuration.invertCornerRadius ? 15 : 5,
-                topTrailingRadius: configuration.invertCornerRadius ? 5 : 15
+                topLeadingRadius: configuration.invertCornerRadius ? 5 : 20,
+                bottomLeadingRadius: configuration.invertCornerRadius ? 20 : 5,
+                bottomTrailingRadius: configuration.invertCornerRadius ? 20 : 5,
+                topTrailingRadius: configuration.invertCornerRadius ? 5 : 20
             )
         )
         .overlay {
             UnevenRoundedRectangle(cornerRadii:.init(
-                                topLeading: configuration.invertCornerRadius ? 5 : 15,
-                                bottomLeading: configuration.invertCornerRadius ? 15 : 5,
-                                bottomTrailing: configuration.invertCornerRadius ? 15 : 5,
-                                topTrailing: configuration.invertCornerRadius ? 5 : 15))
+                                topLeading: configuration.invertCornerRadius ? 5 : 20,
+                                bottomLeading: configuration.invertCornerRadius ? 20 : 5,
+                                bottomTrailing: configuration.invertCornerRadius ? 20 : 5,
+                                topTrailing: configuration.invertCornerRadius ? 5 : 20))
             .stroke(variant.normalBorderColor(), lineWidth: size.borderWidth())
+        }
+        .onTapGesture {
+            interaction.onTap()
         }
         .onPressStateChanged { pressed = $0 }
         .animation(.easeInOut(duration: 0.10), value: pressed)
     }
 
-    func imageView(resource: String, color: Color?, size: CGFloat?) -> some View {
+    func imageView(resource: String, color: Color?, size: CGFloat) -> some View {
         let shouldDim = pressed && variant.underlineText() && configuration.label == nil
         let finalColor = (color ?? .primary).opacity(shouldDim ? 0.6 : 1.0)
 
-        return Image(systemName: resource)
-            .resizable()
-            .scaledToFit()
-            .frame(width: size, height: size)
-            .foregroundStyle(finalColor)
+        if UIImage(systemName: resource) != nil {
+            return Image(systemName: resource)
+                .resizable()
+                .scaledToFit()
+                .frame(width: size, height: size)
+                .foregroundStyle(finalColor)
+                .eraseToAnyView()
+        } else {
+            return Image(resource)
+                .resizable()
+                .renderingMode(color != nil ? .template : .original)
+                .scaledToFit()
+                .frame(width: size, height: size)
+                .foregroundStyle(finalColor)
+                .eraseToAnyView()
+        }
     }
 
     var titleView: some View {
@@ -82,6 +105,11 @@ private extension FCButton {
         }
     }
 
+}
+
+// Small helper to erase View to AnyView from this file (keeps code tidy)
+private extension View {
+    func eraseToAnyView() -> AnyView { AnyView(self) }
 }
 
 private extension FCButton {
@@ -116,14 +144,14 @@ private extension FCButton {
     }
 }
 
-#Preview {
-    ScrollView {
-        FCButtonAlternativeGallery()
-    }
-}
-
-#Preview {
-    ScrollView {
-        FCButtonLinkGallery()
-    }
-}
+//#Preview {
+//    ScrollView {
+//        FCButtonAlternativeGallery()
+//    }
+//}
+//
+//#Preview {
+//    ScrollView {
+//        FCButtonLinkGallery()
+//    }
+//}
