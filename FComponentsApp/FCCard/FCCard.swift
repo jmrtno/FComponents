@@ -34,17 +34,17 @@ public extension FCCard {
                 .frame(maxWidth: configuration.maxWidth ? .infinity : nil,
                        alignment: configuration.contentAlignment)
                 .background(style.innerCardBgColor)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .clipShape(RoundedRectangle(cornerRadius: 30))
                 .overlay {
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 30)
                         .stroke(style.innerCardBorderColor, lineWidth: 1)
                 }
         }
         .padding(configuration.doubleCard ? 16 : 0)
         .background(configuration.doubleCard ? style.doubleCardBgColor : .clear)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .clipShape(RoundedRectangle(cornerRadius: 30))
         .overlay {
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 30)
                 .stroke(style.doubleCardBorderColor, lineWidth: 1)
         }
     }

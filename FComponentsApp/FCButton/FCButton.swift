@@ -49,18 +49,18 @@ private extension FCButton {
         )
         .clipShape(
             .rect(
-                topLeadingRadius: configuration.invertCornerRadius ? 5 : 15,
-                bottomLeadingRadius: configuration.invertCornerRadius ? 15 : 5,
-                bottomTrailingRadius: configuration.invertCornerRadius ? 15 : 5,
-                topTrailingRadius: configuration.invertCornerRadius ? 5 : 15
+                topLeadingRadius: configuration.invertCornerRadius ? 5 : 20,
+                bottomLeadingRadius: configuration.invertCornerRadius ? 20 : 5,
+                bottomTrailingRadius: configuration.invertCornerRadius ? 20 : 5,
+                topTrailingRadius: configuration.invertCornerRadius ? 5 : 20
             )
         )
         .overlay {
             UnevenRoundedRectangle(cornerRadii:.init(
-                                topLeading: configuration.invertCornerRadius ? 5 : 15,
-                                bottomLeading: configuration.invertCornerRadius ? 15 : 5,
-                                bottomTrailing: configuration.invertCornerRadius ? 15 : 5,
-                                topTrailing: configuration.invertCornerRadius ? 5 : 15))
+                                topLeading: configuration.invertCornerRadius ? 5 : 20,
+                                bottomLeading: configuration.invertCornerRadius ? 20 : 5,
+                                bottomTrailing: configuration.invertCornerRadius ? 20 : 5,
+                                topTrailing: configuration.invertCornerRadius ? 5 : 20))
             .stroke(variant.normalBorderColor(), lineWidth: size.borderWidth())
         }
         .onTapGesture {
