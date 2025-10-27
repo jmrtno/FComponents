@@ -9,6 +9,7 @@ DerivedData/
 *.xcodeproj/project.xcworkspace/
 *.xcodeproj/xcuserdata/
 *.xcuserstate
+*.xcuserdatad
 
 # User-specific Xcode settings
 *.pbxuser
@@ -27,6 +28,7 @@ Package.pins
 Package.resolved
 .swiftpm/
 .build/
+.swiftpm/xcode/checkout-cache/
 
 # CocoaPods
 Pods/
@@ -65,9 +67,8 @@ playground.xcworkspace
 
 # macOS metadata
 .DS_Store
-
-# User interface state (Xcode)
-*.xcuserstate
+.AppleDouble
+.LSOverride
 
 # Local environment / config files
 .env
@@ -93,5 +94,6 @@ ExampleApp/DerivedData/
 ExampleApp/*.xcworkspace
 ExampleApp/xcuserdata/
 
-# Swift Package binary cache (optional)
-.swiftpm/xcode/checkout-cache/
+# User interface state (Xcode)
+*.xcuserstate
+*.xcuserdatad
