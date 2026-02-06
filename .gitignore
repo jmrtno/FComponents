@@ -1,4 +1,3 @@
-# =========================
 # Xcode / Swift / iOS
 # =========================
 
@@ -6,9 +5,16 @@
 build/
 DerivedData/
 *.xcbuild
+
+# Xcode workspace and user data
 *.xcodeproj/project.xcworkspace/
 *.xcodeproj/xcuserdata/
 *.xcuserstate
+<<<<<<< Updated upstream
+=======
+*.xcuserdatad
+xcuserdata/
+>>>>>>> Stashed changes
 
 # User-specific Xcode settings
 *.pbxuser
@@ -19,7 +25,6 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata/
 
 # Swift Package Manager
 Packages/
@@ -93,5 +98,9 @@ ExampleApp/DerivedData/
 ExampleApp/*.xcworkspace
 ExampleApp/xcuserdata/
 
+<<<<<<< Updated upstream
 # Swift Package binary cache (optional)
 .swiftpm/xcode/checkout-cache/
+=======
+# User interface state (Xcode) - already covered above
+>>>>>>> Stashed changes
