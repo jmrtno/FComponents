@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
+<<<<<<< Updated upstream
    LastUpgradeVersion = "1620"
+=======
+   LastUpgradeVersion = "2610"
+>>>>>>> Stashed changes
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
