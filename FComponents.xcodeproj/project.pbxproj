@@ -15,6 +15,12 @@
 		ED4D86AA2D905C2D00770CDB /* FCButtonRegularGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D86A92D905C2D00770CDB /* FCButtonRegularGallery.swift */; };
 		ED4D86AC2D90854300770CDB /* FCButtonAlternativeGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D86AB2D90854300770CDB /* FCButtonAlternativeGallery.swift */; };
 		ED4D86AE2D908E5800770CDB /* FCButtonLinkGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D86AD2D908E5800770CDB /* FCButtonLinkGallery.swift */; };
+		ED555A542FCC4C0C0061AE28 /* FCPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED555A532FCC4C050061AE28 /* FCPill.swift */; };
+		ED555A552FCC4C0C0061AE28 /* FCPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED555A532FCC4C050061AE28 /* FCPill.swift */; };
+		ED555A572FCC4C1A0061AE28 /* FCPill+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED555A562FCC4C100061AE28 /* FCPill+ViewModel.swift */; };
+		ED555A582FCC4C1A0061AE28 /* FCPill+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED555A562FCC4C100061AE28 /* FCPill+ViewModel.swift */; };
+		ED555A5B2FCC4FD90061AE28 /* FCPillGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED555A5A2FCC4FCF0061AE28 /* FCPillGallery.swift */; };
+		ED555A5C2FCC4FD90061AE28 /* FCPillGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED555A5A2FCC4FCF0061AE28 /* FCPillGallery.swift */; };
 		ED8523942DFC835500FA4D45 /* FCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8523932DFC835500FA4D45 /* FCCard.swift */; };
 		ED8523962DFC836B00FA4D45 /* FCCard+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8523952DFC835D00FA4D45 /* FCCard+ViewModel.swift */; };
 		EDA75C0D2E09EACE0004EE0E /* FCTextField+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA75C0C2E09EAC00004EE0E /* FCTextField+ViewModel.swift */; };
@@ -67,6 +73,9 @@
 		ED4D86A92D905C2D00770CDB /* FCButtonRegularGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCButtonRegularGallery.swift; sourceTree = "<group>"; };
 		ED4D86AB2D90854300770CDB /* FCButtonAlternativeGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCButtonAlternativeGallery.swift; sourceTree = "<group>"; };
 		ED4D86AD2D908E5800770CDB /* FCButtonLinkGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCButtonLinkGallery.swift; sourceTree = "<group>"; };
+		ED555A532FCC4C050061AE28 /* FCPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPill.swift; sourceTree = "<group>"; };
+		ED555A562FCC4C100061AE28 /* FCPill+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCPill+ViewModel.swift"; sourceTree = "<group>"; };
+		ED555A5A2FCC4FCF0061AE28 /* FCPillGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPillGallery.swift; sourceTree = "<group>"; };
 		ED8523932DFC835500FA4D45 /* FCCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCCard.swift; sourceTree = "<group>"; };
 		ED8523952DFC835D00FA4D45 /* FCCard+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCCard+ViewModel.swift"; sourceTree = "<group>"; };
 		EDA75C0C2E09EAC00004EE0E /* FCTextField+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCTextField+ViewModel.swift"; sourceTree = "<group>"; };
@@ -114,6 +123,7 @@
 		ED4D86AF2D90B74700770CDB /* FComponentsApp */ = {
 			isa = PBXGroup;
 			children = (
+				ED555A522FCC4BF80061AE28 /* FCPill */,
 				ED3FA2D02E0343A600EA2B34 /* FCTextField */,
 				EDCD4A6D2E01E529004F6779 /* Utils */,
 				ED85238F2DFC82EC00FA4D45 /* FCCard */,
@@ -122,6 +132,24 @@
 				ED4D869E2D9037F100770CDB /* Assets.xcassets */,
 			);
 			path = FComponentsApp;
+			sourceTree = "<group>";
+		};
+		ED555A522FCC4BF80061AE28 /* FCPill */ = {
+			isa = PBXGroup;
+			children = (
+				ED555A592FCC4FB60061AE28 /* Gallery */,
+				ED555A562FCC4C100061AE28 /* FCPill+ViewModel.swift */,
+				ED555A532FCC4C050061AE28 /* FCPill.swift */,
+			);
+			path = FCPill;
+			sourceTree = "<group>";
+		};
+		ED555A592FCC4FB60061AE28 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				ED555A5A2FCC4FCF0061AE28 /* FCPillGallery.swift */,
+			);
+			path = Gallery;
 			sourceTree = "<group>";
 		};
 		ED85238F2DFC82EC00FA4D45 /* FCCard */ = {
@@ -300,14 +328,17 @@
 				EDCEE4A42E281C9E006B62F7 /* FCCard+ViewModel.swift in Sources */,
 				EDCEE4A92E281DB6006B62F7 /* FCButtonRegularGallery.swift in Sources */,
 				EDCEE4AA2E281DB6006B62F7 /* FCButtonAlternativeGallery.swift in Sources */,
+				ED555A552FCC4C0C0061AE28 /* FCPill.swift in Sources */,
 				EDCEE4AB2E281DB6006B62F7 /* FCButtonLinkGallery.swift in Sources */,
 				EDCEE4A52E281C9E006B62F7 /* FCCard.swift in Sources */,
 				EDCEE4A82E281D6D006B62F7 /* Utils.swift in Sources */,
 				EDCEE4A12E281C84006B62F7 /* FComponentsApp.swift in Sources */,
 				EDCEE4A22E281C92006B62F7 /* FCButton.swift in Sources */,
+				ED555A572FCC4C1A0061AE28 /* FCPill+ViewModel.swift in Sources */,
 				EDCEE4A32E281C92006B62F7 /* FCButton+ViewModel.swift in Sources */,
 				EDCEE4A62E281CA7006B62F7 /* FCTextField+ViewModel.swift in Sources */,
 				EDCEE4A72E281CA7006B62F7 /* FCTextField.swift in Sources */,
+				ED555A5B2FCC4FD90061AE28 /* FCPillGallery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,14 +347,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED8523942DFC835500FA4D45 /* FCCard.swift in Sources */,
+				ED555A582FCC4C1A0061AE28 /* FCPill+ViewModel.swift in Sources */,
 				ED4D86AC2D90854300770CDB /* FCButtonAlternativeGallery.swift in Sources */,
 				EDCD4A6F2E01E53C004F6779 /* Utils.swift in Sources */,
 				ED4D86A22D9037F100770CDB /* FCButton.swift in Sources */,
 				EDA75C0D2E09EACE0004EE0E /* FCTextField+ViewModel.swift in Sources */,
 				ED8523962DFC836B00FA4D45 /* FCCard+ViewModel.swift in Sources */,
 				ED4D86AA2D905C2D00770CDB /* FCButtonRegularGallery.swift in Sources */,
+				ED555A5C2FCC4FD90061AE28 /* FCPillGallery.swift in Sources */,
 				ED4D86AE2D908E5800770CDB /* FCButtonLinkGallery.swift in Sources */,
 				ED4D86A32D9037F100770CDB /* FCButton+ViewModel.swift in Sources */,
+				ED555A542FCC4C0C0061AE28 /* FCPill.swift in Sources */,
 				ED3FA2D22E0343CE00EA2B34 /* FCTextField.swift in Sources */,
 				ED4D86A42D9037F100770CDB /* FComponentsApp.swift in Sources */,
 			);
