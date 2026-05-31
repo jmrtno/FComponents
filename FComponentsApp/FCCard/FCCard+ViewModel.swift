@@ -8,7 +8,7 @@
 import SwiftUI
 
 public extension FCCard {
-    struct Configuration {
+    struct Configuration: Sendable {
         public var doubleCard: Bool
         public var maxWidth: Bool
         public var contentAlignment: Alignment
@@ -34,7 +34,7 @@ public extension FCCard {
         }
     }
 
-    struct Style {
+    struct Style: Sendable {
         let doubleCardBgColor: Color
         let innerCardBgColor: Color
         let doubleCardBorderColor: Color
@@ -57,19 +57,21 @@ public extension FCCard {
         }
     }
 
-    struct Interaction {
-        public var onTap: () -> Void
+    struct Interaction: Sendable {
+        public var onTap: @Sendable () -> Void
 
-        public init(onTap: @escaping () -> Void) {
+        public init(onTap: @escaping @Sendable () -> Void) {
             self.onTap = onTap
         }
     }
 
-    final class ViewModel: ObservableObject {
+    @MainActor
+    @Observable
+    final class ViewModel {
 
-        @Published public var configuration: Configuration
-        @Published public var style: Style
-        @Published public var interaction: Interaction
+        var configuration: Configuration
+        var style: Style
+        var interaction: Interaction
 
         public init(configuration: Configuration,
                     style: Style,

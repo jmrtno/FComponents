@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct FCButton: View {
 
-    @ObservedObject private var viewModel: ViewModel
+    @State private var viewModel: ViewModel
 
     @State private var pressed = false
 
