@@ -5,11 +5,10 @@
 //  Created by Javier Martin on 14/2/25.
 //
 
-import Combine
 import SwiftUI
 
 public extension FCButton {
-    struct Configuration {
+    struct Configuration: Sendable {
         public var label: String?
         public var leadingIcon: String?
         public var trailingIcon: String?
@@ -29,10 +28,10 @@ public extension FCButton {
         }
     }
 
-    struct ViewState {
+    struct ViewState: Sendable {
         let type: ViewStateType
 
-        enum ViewStateType {
+        enum ViewStateType: Sendable {
             case enabled
             case disabled
         }
@@ -46,10 +45,10 @@ public extension FCButton {
         }
     }
 
-    struct Variant {
+    struct Variant: Sendable {
         public let type: VariantType
 
-        public enum VariantType {
+        public enum VariantType: Sendable {
             // Existing color-based cases (kept for backward compatibility)
             case regular(color: Color?)
             case alternative(color: Color)
@@ -164,7 +163,7 @@ public extension FCButton {
         }
     }
 
-    struct Style {
+    struct Style: Sendable {
         let textColor: Color
         let leadingIconColor: Color?
         let trailingIconColor: Color?
@@ -178,10 +177,10 @@ public extension FCButton {
         }
     }
 
-    struct Size {
+    struct Size: Sendable {
         let type: SizeType
 
-        enum SizeType {
+        enum SizeType: Sendable {
             case small
             case medium
             case large
@@ -233,22 +232,24 @@ public extension FCButton {
         }
     }
 
-    struct Interaction {
-        public var onTap: () -> Void
+    struct Interaction: Sendable {
+        public var onTap: @Sendable () -> Void
 
-        public init(onTap: @escaping () -> Void) {
+        public init(onTap: @escaping @Sendable () -> Void) {
             self.onTap = onTap
         }
     }
 
-    final class ViewModel: ObservableObject {
+    @MainActor
+    @Observable
+    final class ViewModel {
 
-        @Published public var configuration: Configuration
-        @Published public var viewState: ViewState
-        @Published public var variant: Variant
-        @Published public var style: Style
-        @Published public var size: Size
-        @Published public var interaction: Interaction
+        var configuration: Configuration
+        var viewState: ViewState
+        var variant: Variant
+        var style: Style
+        var size: Size
+        var interaction: Interaction
 
         public init(configuration: Configuration,
                     viewState: ViewState,

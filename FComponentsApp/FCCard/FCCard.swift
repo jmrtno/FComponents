@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct FCCard<Content: View>: View {
 
-    @ObservedObject private var viewModel: ViewModel
+    @State private var viewModel: ViewModel
     @State private var pressed = false
     private let content: Content
 

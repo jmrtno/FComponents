@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct FCTextField: View {
 
-    @ObservedObject private var viewModel: ViewModel
+    @State private var viewModel: ViewModel
 
     @State private var value : String = ""
 

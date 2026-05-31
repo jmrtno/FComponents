@@ -8,7 +8,7 @@
 import SwiftUI
 
 public extension FCTextField {
-    struct Configuration {
+    struct Configuration: Sendable {
         public var placeholder: String?
         public var icon: String?
 
@@ -19,10 +19,10 @@ public extension FCTextField {
         }
     }
 
-    struct Variant {
+    struct Variant: Sendable {
         let type: VariantType
 
-        enum VariantType {
+        enum VariantType: Sendable {
             case bordered
             case plain
             case basic
@@ -63,10 +63,12 @@ public extension FCTextField {
         }
     }
 
-    final class ViewModel: ObservableObject {
+    @MainActor
+    @Observable
+    final class ViewModel {
         
-        @Published public var configuration: Configuration
-        @Published public var variant: Variant
+        var configuration: Configuration
+        var variant: Variant
 
         public init(configuration: Configuration, variant: Variant) {
             self.configuration = configuration
