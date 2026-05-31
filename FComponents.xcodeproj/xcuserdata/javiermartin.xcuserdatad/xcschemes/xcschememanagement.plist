@@ -6,11 +6,15 @@
 	<dict>
 		<key>FComponents.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
 		<key>FComponentsApp.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
@@ -22,6 +26,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>EDCEE4912E281C11006B62F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>EDFFEE3B2D5F811700E46462</key>
 		<dict>
 			<key>primary</key>
