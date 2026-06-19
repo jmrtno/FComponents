@@ -21,6 +21,8 @@
 		ED555A582FCC4C1A0061AE28 /* FCPill+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED555A562FCC4C100061AE28 /* FCPill+ViewModel.swift */; };
 		ED555A5B2FCC4FD90061AE28 /* FCPillGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED555A5A2FCC4FCF0061AE28 /* FCPillGallery.swift */; };
 		ED555A5C2FCC4FD90061AE28 /* FCPillGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED555A5A2FCC4FCF0061AE28 /* FCPillGallery.swift */; };
+		ED6B21CB2FE1C05B008B17C3 /* FComponents_framework.docc in Sources */ = {isa = PBXBuildFile; fileRef = ED6B21C92FE1C05B008B17C3 /* FComponents_framework.docc */; };
+		ED6B21CC2FE1C05B008B17C3 /* FComponents_framework.h in Headers */ = {isa = PBXBuildFile; fileRef = ED6B21C82FE1C05B008B17C3 /* FComponents_framework.h */; };
 		ED8523942DFC835500FA4D45 /* FCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8523932DFC835500FA4D45 /* FCCard.swift */; };
 		ED8523962DFC836B00FA4D45 /* FCCard+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8523952DFC835D00FA4D45 /* FCCard+ViewModel.swift */; };
 		EDA75C0D2E09EACE0004EE0E /* FCTextField+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA75C0C2E09EAC00004EE0E /* FCTextField+ViewModel.swift */; };
@@ -76,6 +78,8 @@
 		ED555A532FCC4C050061AE28 /* FCPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPill.swift; sourceTree = "<group>"; };
 		ED555A562FCC4C100061AE28 /* FCPill+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCPill+ViewModel.swift"; sourceTree = "<group>"; };
 		ED555A5A2FCC4FCF0061AE28 /* FCPillGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPillGallery.swift; sourceTree = "<group>"; };
+		ED6B21C82FE1C05B008B17C3 /* FComponents_framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FComponents_framework.h; sourceTree = "<group>"; };
+		ED6B21C92FE1C05B008B17C3 /* FComponents_framework.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = FComponents_framework.docc; sourceTree = "<group>"; };
 		ED8523932DFC835500FA4D45 /* FCCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCCard.swift; sourceTree = "<group>"; };
 		ED8523952DFC835D00FA4D45 /* FCCard+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCCard+ViewModel.swift"; sourceTree = "<group>"; };
 		EDA75C0C2E09EAC00004EE0E /* FCTextField+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCTextField+ViewModel.swift"; sourceTree = "<group>"; };
@@ -83,14 +87,6 @@
 		EDCEE4922E281C11006B62F7 /* FComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDFFEE3C2D5F811700E46462 /* FComponentsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FComponentsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		EDCEE4932E281C11006B62F7 /* FComponents */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FComponents;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EDCEE48F2E281C11006B62F7 /* Frameworks */ = {
@@ -152,6 +148,15 @@
 			path = Gallery;
 			sourceTree = "<group>";
 		};
+		ED6B21CA2FE1C05B008B17C3 /* FComponents */ = {
+			isa = PBXGroup;
+			children = (
+				ED6B21C82FE1C05B008B17C3 /* FComponents_framework.h */,
+				ED6B21C92FE1C05B008B17C3 /* FComponents_framework.docc */,
+			);
+			path = FComponents;
+			sourceTree = "<group>";
+		};
 		ED85238F2DFC82EC00FA4D45 /* FCCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				ED4D86AF2D90B74700770CDB /* FComponentsApp */,
-				EDCEE4932E281C11006B62F7 /* FComponents */,
+				ED6B21CA2FE1C05B008B17C3 /* FComponents */,
 				EDFFEE3D2D5F811700E46462 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED6B21CC2FE1C05B008B17C3 /* FComponents_framework.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,9 +238,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				EDCEE4932E281C11006B62F7 /* FComponents */,
 			);
 			name = FComponents;
 			packageProductDependencies = (
@@ -331,6 +334,7 @@
 				ED555A552FCC4C0C0061AE28 /* FCPill.swift in Sources */,
 				EDCEE4AB2E281DB6006B62F7 /* FCButtonLinkGallery.swift in Sources */,
 				EDCEE4A52E281C9E006B62F7 /* FCCard.swift in Sources */,
+				ED6B21CB2FE1C05B008B17C3 /* FComponents_framework.docc in Sources */,
 				EDCEE4A82E281D6D006B62F7 /* Utils.swift in Sources */,
 				EDCEE4A12E281C84006B62F7 /* FComponentsApp.swift in Sources */,
 				EDCEE4A22E281C92006B62F7 /* FCButton.swift in Sources */,
@@ -389,6 +393,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -424,6 +429,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -583,6 +589,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,6 +619,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
