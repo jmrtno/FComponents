@@ -20,11 +20,11 @@ struct FCPillGallery: View {
                 .font(.headline)
             HStack(spacing: 10) {
                 FCPill(
-                    viewModel: createPillViewModel(text: "Option 1", image: "star.fill", variant: .primary),
+                    viewModel: createPillViewModel(text: "Option 1", image: "star.fill", variant: .primary(textColor: .white, backgroundColor: .blue)),
                     isSelected: $isSelected1
                 )
                 FCPill(
-                    viewModel: createPillViewModel(text: "Option 2", image: "heart.fill", variant: .primary),
+                    viewModel: createPillViewModel(text: "Option 2", image: "heart.fill", variant: .primary(textColor: .white, backgroundColor: .blue)),
                     isSelected: $isSelected2
                 )
             }
@@ -34,11 +34,11 @@ struct FCPillGallery: View {
                 .font(.headline)
             HStack(spacing: 10) {
                 FCPill(
-                    viewModel: createPillViewModel(text: "Filter A", image: "line.3.horizontal.decrease.circle", variant: .secondary),
+                    viewModel: createPillViewModel(text: "Filter A", image: "line.3.horizontal.decrease.circle", variant: .secondary(textAndBorderColor: .blue, backgroundColor: .blue)),
                     isSelected: $isSelected3
                 )
                 FCPill(
-                    viewModel: createPillViewModel(text: "Filter B", image: "line.3.horizontal.decrease.circle", variant: .secondary),
+                    viewModel: createPillViewModel(text: "Filter B", image: "line.3.horizontal.decrease.circle", variant: .secondary(textAndBorderColor: .blue, backgroundColor: .blue)),
                     isSelected: $isSelected4
                 )
             }
@@ -48,15 +48,15 @@ struct FCPillGallery: View {
                 .font(.headline)
             HStack(spacing: 10) {
                 FCPill(
-                    viewModel: createPillViewModel(text: "Small", image: "circle", variant: .primary, size: .small),
+                    viewModel: createPillViewModel(text: "Small", image: "circle", variant: .primary(textColor: .white, backgroundColor: .blue), size: .small),
                     isSelected: $isSelectedSmall
                 )
                 FCPill(
-                    viewModel: createPillViewModel(text: "Medium", image: "circle", variant: .primary, size: .medium),
+                    viewModel: createPillViewModel(text: "Medium", image: "circle", variant: .primary(textColor: .white, backgroundColor: .blue), size: .medium),
                     isSelected: $isSelectedMedium
                 )
                 FCPill(
-                    viewModel: createPillViewModel(text: "Large", image: "circle", variant: .primary, size: .large),
+                    viewModel: createPillViewModel(text: "Large", image: "circle", variant: .primary(textColor: .white, backgroundColor: .blue), size: .large),
                     isSelected: $isSelectedLarge
                 )
             }
@@ -66,11 +66,11 @@ struct FCPillGallery: View {
                 .font(.headline)
             HStack(spacing: 10) {
                 FCPill(
-                    viewModel: createPillViewModel(text: "Text Only", image: nil, variant: .primary),
+                    viewModel: createPillViewModel(text: "Text Only", image: nil, variant: .primary(textColor: .white, backgroundColor: .blue)),
                     isSelected: $isSelectedText1
                 )
                 FCPill(
-                    viewModel: createPillViewModel(text: "Selected", image: nil, variant: .primary),
+                    viewModel: createPillViewModel(text: "Selected", image: nil, variant: .primary(textColor: .white, backgroundColor: .blue)),
                     isSelected: $isSelectedText2
                 )
             }
@@ -80,11 +80,11 @@ struct FCPillGallery: View {
                 .font(.headline)
             HStack(spacing: 10) {
                 FCPill(
-                    viewModel: createPillViewModel(text: nil, image: "star.fill", variant: .primary),
+                    viewModel: createPillViewModel(text: nil, image: "star.fill", variant: .primary(textColor: .white, backgroundColor: .blue)),
                     isSelected: $isSelectedImage1
                 )
                 FCPill(
-                    viewModel: createPillViewModel(text: nil, image: "heart.fill", variant: .primary),
+                    viewModel: createPillViewModel(text: nil, image: "heart.fill", variant: .primary(textColor: .white, backgroundColor: .blue)),
                     isSelected: $isSelectedImage2
                 )
             }
@@ -94,7 +94,7 @@ struct FCPillGallery: View {
 
     private func createPillViewModel(text: String? = nil,
                                      image: String? = nil,
-                                     variant: PillVariant,
+                                     variant: FCPill.Variant,
                                      size: FCPill.Size = .medium) -> FCPill.ViewModel {
         let configuration = FCPill.Configuration(text: text, image: image)
         let viewState = FCPill.ViewState.enabled
@@ -104,31 +104,11 @@ struct FCPillGallery: View {
         return FCPill.ViewModel(
             configuration: configuration,
             viewState: viewState,
-            variant: variant.colors,
+            variant: variant,
             style: style,
             size: size,
             interaction: interaction
         )
-    }
-}
-
-enum PillVariant {
-    case primary
-    case secondary
-
-    var colors: FCPill.Variant {
-        switch self {
-        case .primary:
-            return FCPill.Variant(
-                selectedColor: .white,
-                unselectedColor: .white
-            )
-        case .secondary:
-            return FCPill.Variant(
-                selectedColor: .blue,
-                unselectedColor: .gray
-            )
-        }
     }
 }
 

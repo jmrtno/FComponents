@@ -30,36 +30,61 @@ public extension FCPill {
     }
 
     struct Variant: Sendable {
-        public var selectedColor: Color
-        public var unselectedColor: Color
+        public let type: VariantType
 
-        public init(selectedColor: Color,
-                    unselectedColor: Color) {
-            self.selectedColor = selectedColor
-            self.unselectedColor = unselectedColor
+        public enum VariantType: Sendable {
+            case primary(textColor: Color, backgroundColor: Color)
+            case secondary(textAndBorderColor: Color, backgroundColor: Color)
+        }
+
+        public init(type: VariantType) {
+            self.type = type
+        }
+
+        public static func primary(textColor: Color, backgroundColor: Color) -> Variant {
+            Variant(type: .primary(textColor: textColor, backgroundColor: backgroundColor))
+        }
+
+        public static func secondary(textAndBorderColor: Color, backgroundColor: Color) -> Variant {
+            Variant(type: .secondary(textAndBorderColor: textAndBorderColor, backgroundColor: backgroundColor))
         }
 
         func backgroundColor(isSelected: Bool) -> Color {
-            if isSelected {
-                return selectedColor.opacity(0.15)
-            } else {
-                return Color.clear
+            switch type {
+            case .primary( _, let backgroundColor):
+                if isSelected {
+                    return backgroundColor
+                } else {
+                    return backgroundColor.opacity(0.7)
+                }
+            case .secondary( _, let backgroundColor):
+                if isSelected {
+                    return backgroundColor.opacity(0.2)
+                } else {
+                    return Color.clear
+                }
             }
         }
 
         func borderColor(isSelected: Bool) -> Color {
-            if isSelected {
-                return selectedColor.opacity(0.4)
-            } else {
-                return unselectedColor.opacity(0.2)
+            switch type {
+            case .primary:
+                return Color.clear
+            case .secondary(let textAndBorderColor, _):
+                return textAndBorderColor
             }
         }
 
         func textColor(isSelected: Bool) -> Color {
-            if isSelected {
-                return selectedColor
-            } else {
-                return unselectedColor.opacity(0.5)
+            switch type {
+            case .primary(let textColor, _):
+                if isSelected {
+                    return textColor
+                } else {
+                    return textColor.opacity(0.7)
+                }
+            case .secondary(let textAndBorderColor, _):
+                return textAndBorderColor
             }
         }
     }
