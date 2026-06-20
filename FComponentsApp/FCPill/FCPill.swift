@@ -42,7 +42,7 @@ private extension FCPill {
             )
             .overlay(
                 Capsule()
-                    .stroke(variant.borderColor(isSelected: isSelected), lineWidth: 1)
+                    .strokeBorder(variant.borderColor(isSelected: isSelected), lineWidth: 1)
             )
             .foregroundStyle(textColor)
         }

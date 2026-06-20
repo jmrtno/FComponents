@@ -75,7 +75,7 @@ struct FCPillGallery: View {
                     .font(.headline)
                 HStack(spacing: 10) {
                     ForEach(0..<3, id: \.self) { index in
-                        let labels = ["Social", "Jurídica", "Médica"]
+                        let labels = ["Ayuda Social", "Ayuda Jurídica", "Ayuda Médica"]
                         FCPill(
                             viewModel: createPillViewModel(
                                 text: labels[index],
