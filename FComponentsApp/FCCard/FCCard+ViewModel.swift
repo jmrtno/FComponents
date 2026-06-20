@@ -58,9 +58,9 @@ public extension FCCard {
     }
 
     struct Interaction: Sendable {
-        public var onTap: @Sendable () -> Void
+        public var onTap: @MainActor @Sendable () -> Void
 
-        public init(onTap: @escaping @Sendable () -> Void) {
+        public init(onTap: @escaping @MainActor @Sendable () -> Void) {
             self.onTap = onTap
         }
     }
