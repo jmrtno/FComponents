@@ -1,105 +1,126 @@
 import SwiftUI
 
 struct FCPillGallery: View {
-    @State private var isSelected1 = false
-    @State private var isSelected2 = true
-    @State private var isSelected3 = false
-    @State private var isSelected4 = true
-    @State private var isSelectedSmall = false
-    @State private var isSelectedMedium = false
-    @State private var isSelectedLarge = false
-    @State private var isSelectedText1 = false
-    @State private var isSelectedText2 = true
-    @State private var isSelectedImage1 = false
-    @State private var isSelectedImage2 = true
+    // Multi-selection: cada pill gestiona su propio estado
+    @State private var multiA = false
+    @State private var multiB = false
+    @State private var multiC = false
+
+    // Single-selection: estado compartido, solo una pill activa a la vez
+    @State private var singlePrimary: Int? = nil
+    @State private var singleSecondary: Int? = nil
 
     var body: some View {
-        VStack(spacing: 20) {
-            // Variant primary
-            Text("Primary Variant")
-                .font(.headline)
-            HStack(spacing: 10) {
-                FCPill(
-                    viewModel: createPillViewModel(text: "Option 1", image: "star.fill", variant: .primary(textColor: .white, backgroundColor: .blue)),
-                    isSelected: $isSelected1
-                )
-                FCPill(
-                    viewModel: createPillViewModel(text: "Option 2", image: "heart.fill", variant: .primary(textColor: .white, backgroundColor: .blue)),
-                    isSelected: $isSelected2
-                )
-            }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 24) {
 
-            // Variant secondary
-            Text("Secondary Variant")
-                .font(.headline)
-            HStack(spacing: 10) {
-                FCPill(
-                    viewModel: createPillViewModel(text: "Filter A", image: "line.3.horizontal.decrease.circle", variant: .secondary(textAndBorderColor: .blue, backgroundColor: .blue)),
-                    isSelected: $isSelected3
-                )
-                FCPill(
-                    viewModel: createPillViewModel(text: "Filter B", image: "line.3.horizontal.decrease.circle", variant: .secondary(textAndBorderColor: .blue, backgroundColor: .blue)),
-                    isSelected: $isSelected4
-                )
-            }
+                // MARK: Multi-selection · Primary
+                Text("Multi-selection · Primary")
+                    .font(.headline)
+                HStack(spacing: 10) {
+                    FCPill(
+                        viewModel: createPillViewModel(text: "Option A", image: "star.fill", variant: .primary(textColor: .white, backgroundColor: .blue)),
+                        isSelected: $multiA
+                    )
+                    FCPill(
+                        viewModel: createPillViewModel(text: "Option B", image: "heart.fill", variant: .primary(textColor: .white, backgroundColor: .blue)),
+                        isSelected: $multiB
+                    )
+                    FCPill(
+                        viewModel: createPillViewModel(text: "Option C", variant: .primary(textColor: .white, backgroundColor: .blue)),
+                        isSelected: $multiC
+                    )
+                }
 
-            // Different sizes
-            Text("Different Sizes")
-                .font(.headline)
-            HStack(spacing: 10) {
-                FCPill(
-                    viewModel: createPillViewModel(text: "Small", image: "circle", variant: .primary(textColor: .white, backgroundColor: .blue), size: .small),
-                    isSelected: $isSelectedSmall
-                )
-                FCPill(
-                    viewModel: createPillViewModel(text: "Medium", image: "circle", variant: .primary(textColor: .white, backgroundColor: .blue), size: .medium),
-                    isSelected: $isSelectedMedium
-                )
-                FCPill(
-                    viewModel: createPillViewModel(text: "Large", image: "circle", variant: .primary(textColor: .white, backgroundColor: .blue), size: .large),
-                    isSelected: $isSelectedLarge
-                )
-            }
+                // MARK: Single-selection · Primary
+                Text("Single-selection · Primary")
+                    .font(.headline)
+                HStack(spacing: 10) {
+                    ForEach(0..<3, id: \.self) { index in
+                        let labels = ["Todos", "Activos", "Cerrados"]
+                        FCPill(
+                            viewModel: createPillViewModel(
+                                text: labels[index],
+                                variant: .primary(textColor: .white, backgroundColor: .blue),
+                                onTap: { singlePrimary = index }
+                            ),
+                            isSelected: Binding(
+                                get: { singlePrimary == index },
+                                set: { _ in singlePrimary = index }
+                            )
+                        )
+                    }
+                }
 
-            // Text only
-            Text("Text Only")
-                .font(.headline)
-            HStack(spacing: 10) {
-                FCPill(
-                    viewModel: createPillViewModel(text: "Text Only", image: nil, variant: .primary(textColor: .white, backgroundColor: .blue)),
-                    isSelected: $isSelectedText1
-                )
-                FCPill(
-                    viewModel: createPillViewModel(text: "Selected", image: nil, variant: .primary(textColor: .white, backgroundColor: .blue)),
-                    isSelected: $isSelectedText2
-                )
-            }
+                // MARK: Multi-selection · Secondary
+                Text("Multi-selection · Secondary")
+                    .font(.headline)
+                HStack(spacing: 10) {
+                    FCPill(
+                        viewModel: createPillViewModel(text: "Tag A", image: "line.3.horizontal.decrease.circle", variant: .secondary(textAndBorderColor: .blue, backgroundColor: .blue)),
+                        isSelected: $multiA
+                    )
+                    FCPill(
+                        viewModel: createPillViewModel(text: "Tag B", image: "line.3.horizontal.decrease.circle", variant: .secondary(textAndBorderColor: .blue, backgroundColor: .blue)),
+                        isSelected: $multiB
+                    )
+                    FCPill(
+                        viewModel: createPillViewModel(text: "Tag C", variant: .secondary(textAndBorderColor: .blue, backgroundColor: .blue)),
+                        isSelected: $multiC
+                    )
+                }
 
-            // Image only
-            Text("Image Only")
-                .font(.headline)
-            HStack(spacing: 10) {
-                FCPill(
-                    viewModel: createPillViewModel(text: nil, image: "star.fill", variant: .primary(textColor: .white, backgroundColor: .blue)),
-                    isSelected: $isSelectedImage1
-                )
-                FCPill(
-                    viewModel: createPillViewModel(text: nil, image: "heart.fill", variant: .primary(textColor: .white, backgroundColor: .blue)),
-                    isSelected: $isSelectedImage2
-                )
+                // MARK: Single-selection · Secondary
+                Text("Single-selection · Secondary")
+                    .font(.headline)
+                HStack(spacing: 10) {
+                    ForEach(0..<3, id: \.self) { index in
+                        let labels = ["Social", "Jurídica", "Médica"]
+                        FCPill(
+                            viewModel: createPillViewModel(
+                                text: labels[index],
+                                variant: .secondary(textAndBorderColor: .indigo, backgroundColor: .indigo),
+                                onTap: { singleSecondary = index }
+                            ),
+                            isSelected: Binding(
+                                get: { singleSecondary == index },
+                                set: { _ in singleSecondary = index }
+                            )
+                        )
+                    }
+                }
+
+                // MARK: Sizes
+                Text("Sizes")
+                    .font(.headline)
+                HStack(spacing: 10) {
+                    FCPill(
+                        viewModel: createPillViewModel(text: "Small", variant: .primary(textColor: .white, backgroundColor: .blue), size: .small),
+                        isSelected: $multiA
+                    )
+                    FCPill(
+                        viewModel: createPillViewModel(text: "Medium", variant: .primary(textColor: .white, backgroundColor: .blue), size: .medium),
+                        isSelected: $multiB
+                    )
+                    FCPill(
+                        viewModel: createPillViewModel(text: "Large", variant: .primary(textColor: .white, backgroundColor: .blue), size: .large),
+                        isSelected: $multiC
+                    )
+                }
             }
+            .padding()
         }
-        .padding()
     }
 
     private func createPillViewModel(text: String? = nil,
                                      image: String? = nil,
                                      variant: FCPill.Variant,
-                                     size: FCPill.Size = .medium) -> FCPill.ViewModel {
+                                     size: FCPill.Size = .medium,
+                                     onTap: @escaping @MainActor @Sendable () -> Void = {}) -> FCPill.ViewModel {
         let configuration = FCPill.Configuration(text: text, image: image)
         let viewState = FCPill.ViewState.enabled
         let style = FCPill.Style()
-        let interaction = FCPill.Interaction(onTap: {})
+        let interaction = FCPill.Interaction(onTap: onTap)
 
         return FCPill.ViewModel(
             configuration: configuration,
@@ -114,7 +135,6 @@ struct FCPillGallery: View {
 
 #Preview {
     ZStack {
-        Color.black.ignoresSafeArea()
         FCPillGallery()
     }
 }

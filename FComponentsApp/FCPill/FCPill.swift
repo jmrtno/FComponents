@@ -5,7 +5,7 @@ import SwiftUI
 public struct FCPill: View {
     @State private var viewModel: ViewModel
 
-    @Binding var isSelected: Bool
+    @Binding public var isSelected: Bool
 
     public init(viewModel: ViewModel, isSelected: Binding<Bool>) {
         self.viewModel = viewModel
@@ -20,10 +20,10 @@ public struct FCPill: View {
 private extension FCPill {
 
     var mainContent: some View {
-        Button(action: {
+        Button {
             isSelected.toggle()
             interaction.onTap()
-        }) {
+        } label: {
             HStack(spacing: 6) {
                 if let image = configuration.image {
                     imageView(resource: image)
@@ -31,6 +31,7 @@ private extension FCPill {
                 if let text = configuration.text {
                     Text(text)
                         .font(size.fontSize())
+                        .fixedSize(horizontal: true, vertical: false)
                 }
             }
             .padding(.horizontal, size.horizontalPadding())
@@ -49,24 +50,24 @@ private extension FCPill {
         .disabled(viewState.type == .disabled)
     }
 
+    @ViewBuilder
     func imageView(resource: String) -> some View {
         let finalColor = iconColor
+        let isSystemImage = resource.contains(".")
 
-        if UIImage(systemName: resource) != nil {
-            return Image(systemName: resource)
+        if isSystemImage {
+            Image(systemName: resource)
                 .resizable()
                 .scaledToFit()
                 .frame(width: size.iconSize(), height: size.iconSize())
                 .foregroundStyle(finalColor)
-                .eraseToAnyView()
         } else {
-            return Image(resource)
+            Image(resource)
                 .resizable()
                 .renderingMode(style.iconColor != nil ? .template : .original)
                 .scaledToFit()
                 .frame(width: size.iconSize(), height: size.iconSize())
                 .foregroundStyle(finalColor)
-                .eraseToAnyView()
         }
     }
 
@@ -111,7 +112,3 @@ private extension FCPill {
     }
 }
 
-// Small helper to erase View to AnyView from this file (keeps code tidy)
-private extension View {
-    func eraseToAnyView() -> AnyView { AnyView(self) }
-}
